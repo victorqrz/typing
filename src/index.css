@@ -18,7 +18,7 @@ body {
 }
 
 .container {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   text-align: center;
   display: flex;
@@ -60,4 +60,6 @@ body {
 .container .typed-keys {
   margin-top: 20px;
   font-size: 1.3rem;
+  width: 600px;
+  overflow: hidden;
 }
