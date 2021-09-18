@@ -1,9 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import wordList from './resources/words.json';
 
 const MAX_TYPED_KEYS = 30;
 
+const getWord = () => {
+  const index = Math.floor(Math.random() * wordList.length);
+  const word = wordList[index];
+  return word.toLowerCase();
+}
+
 const App = () => {
   const [typedKeys, setTypedKeys] = useState([]);
+  const [word, setWord] = useState('');
+
+  useEffect(() => {
+    setWord(getWord());
+  }, []);
+
+  console.log('word', getWord());
 
   const handleKeyDown = (e) => {
     e.preventDefault();
@@ -17,8 +31,8 @@ const App = () => {
   return (
     <div className="container" tabIndex="0" onKeyDown={handleKeyDown}>
       <div className="valid-keys">
-        <span className="matched">vic</span>
-        <span className="remainder">tor</span>
+        <span className="matched"></span>
+        <span className="remainder">{word}</span>
       </div>
 
       <div className="typed-keys">
